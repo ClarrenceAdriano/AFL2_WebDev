@@ -19,6 +19,7 @@ class ProductController extends Controller
 
     public function featuredProducts()
     {
+        
         $carouselProducts = Product::whereIn('id', function ($query) {
             $query->selectRaw('MIN(id)')
                 ->from('products')
