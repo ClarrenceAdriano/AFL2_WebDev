@@ -12,13 +12,13 @@
                     <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::is('Products') ? 'active' : '' }}" href="/Products">Products</a>
+                    <a class="nav-link {{ Request::is('products') ? 'active' : '' }}" href="/products">Products</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::is('AboutUs') ? 'active' : '' }}" href="/AboutUs">About Us</a>
+                    <a class="nav-link {{ Request::is('aboutUs') ? 'active' : '' }}" href="/aboutUs">About Us</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::is('Contact') ? 'active' : '' }}" href="/Contact">Contact</a>
+                    <a class="nav-link {{ Request::is('contact') ? 'active' : '' }}" href="/contact">Contact</a>
                 </li>
             </ul>
         </div>

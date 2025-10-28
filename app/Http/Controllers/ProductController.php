@@ -4,15 +4,29 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Product;
+use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    public function showProducts()
+    public function showProducts(Request $request)
     {
-        $categories = Category::with('products')->get();
+        if ($request->filled('search')) {
+            $keyword = $request->search;
+
+            $categories = Category::whereHas('products', function ($query) use ($keyword) {
+                $query->where('name', 'like', "%{$keyword}%");
+            })
+            ->with(['products' => function ($query) use ($keyword) {
+                $query->where('name', 'like', "%{$keyword}%");
+            }])
+            ->get();
+        } else {
+            $categories = Category::with('products')->get();
+        }
 
         return view('products', [
-            'categories' => $categories
+            'categories' => $categories,
+            'search' => $request->search ?? ''
         ]);
     }
 

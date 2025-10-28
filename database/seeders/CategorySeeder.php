@@ -15,24 +15,12 @@ class CategorySeeder extends Seeder
     {
         DB::table('categories')->insert([
             [
-                'name' => 'Streetwear',
-                'description' => 'Gaya kasual kekinian untuk tampil lebih percaya diri di jalanan.',
-            ],
-            [
-                'name' => 'Formal Wear',
-                'description' => 'Pakaian elegan untuk meeting, kerja, atau acara resmi.',
-            ],
-            [
-                'name' => 'Outerwear',
-                'description' => 'Jaket dan coat stylish untuk melengkapi tampilan di cuaca dingin.',
+                'name' => 'Tops',
+                'description' => 'Kaos hingga Jacket, nyaman, keren dan trendy',
             ],
             [
                 'name' => 'Bottoms',
                 'description' => 'Celana panjang hingga pendek, nyaman sekaligus trendy.',
-            ],
-            [
-                'name' => 'Activewear',
-                'description' => 'Baju sporty yang ringan, cocok untuk olahraga maupun casual style.',
             ],
             [
                 'name' => 'Accessories',

@@ -5,13 +5,13 @@ use App\Http\Controllers\ProductController;
 
 Route::get('/', [ProductController::class, 'featuredProducts']);
 
-Route::get('/Products', [ProductController::class, 'showProducts']);
+Route::get('/products', [ProductController::class, 'showProducts'])->name('products');
 
-Route::get('/AboutUs', function () {
+Route::get('/aboutUs', function () {
     return view('aboutUs');
 });
 
-Route::get('/Contact', function () {
+Route::get('/contact', function () {
     return view('contact');
 });
 
