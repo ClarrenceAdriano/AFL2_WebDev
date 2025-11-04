@@ -10,23 +10,23 @@ class ProductController extends Controller
 {
     public function showProducts(Request $request)
     {
-        if ($request->filled('search')) {
-            $keyword = $request->search;
+        $search = $request->search;
 
-            $categories = Category::whereHas('products', function ($query) use ($keyword) {
-                $query->where('name', 'like', "%{$keyword}%");
+        $products = Product::query()
+            ->with('category')
+            ->when($search, function ($query, $search) {
+                return $query->where('name', 'like', "%{$search}%")
+                    ->orWhere('description', 'like', "%{$search}%")
+                    ->orWhereHas('category', function ($q) use ($search) {
+                        $q->where('name', 'like', "%{$search}%");
+                    });
             })
-            ->with(['products' => function ($query) use ($keyword) {
-                $query->where('name', 'like', "%{$keyword}%");
-            }])
-            ->get();
-        } else {
-            $categories = Category::with('products')->get();
-        }
+            ->latest()
+            ->paginate(4);
 
         return view('products', [
-            'categories' => $categories,
-            'search' => $request->search ?? ''
+            'products' => $products,
+            'search' => $search ?? ''
         ]);
     }
 
