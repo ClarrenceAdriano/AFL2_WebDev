@@ -22,7 +22,7 @@ class ProductController extends Controller
                     });
             })
             ->latest()
-            ->paginate(4);
+            ->paginate(12);
 
         return view('products', [
             'products' => $products,
