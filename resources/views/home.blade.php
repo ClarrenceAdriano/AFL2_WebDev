@@ -29,7 +29,7 @@
                 <h1 class="display-5 fw-bold">Koleksi Terbaru Musim Ini</h1>
                 <p class="fs-4 d-none d-md-block">Temukan gaya terbaikmu dengan koleksi pakaian kami yang dirancang untuk
                     kenyamanan dan tren terkini.</p>
-                <a class="btn btn-dark btn-lg" href="/Products" role="button">Jelajahi Koleksi</a>
+                <a class="btn btn-dark btn-lg" href="/products" role="button">Jelajahi Koleksi</a>
             </div>
         </div>
     </div>
