@@ -21,8 +21,30 @@
                 <li class="nav-item">
                     <a class="nav-link {{ Request::is('contact') ? 'active' : '' }}" href="/contact">Contact</a>
                 </li>
+
                 @auth
-                    <!-- Jika user sudah login -->
+                    @if (Auth::user()->role === 'user')
+                        <li class="nav-item">
+                            <a class="nav-link {{ Request::is('cart') ? 'active' : '' }}" href="{{ route('cart.index') }}">
+                                Cart
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link {{ Request::is('transactions') ? 'active' : '' }}" href="{{ route('transactions.index') }}">
+                                Transactions
+                            </a>
+                        </li>
+                    @endif
+
+                    @if (Auth::user()->role === 'admin')
+                        <li class="nav-item">
+                            <a class="nav-link {{ Request::is('admin/dashboard') ? 'active' : '' }}" href="/admin/dashboard">
+                                Admin Dashboard
+                            </a>
+                        </li>
+                    @endif
+
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle fw-semibold" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
@@ -40,7 +62,6 @@
                         </ul>
                     </li>
                 @else
-                    <!-- Jika user belum login -->
                     <li class="nav-item">
                         <a class="nav-link {{ Request::is('login') ? 'active' : '' }}" href="{{ route('login') }}">Login</a>
                     </li>

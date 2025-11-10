@@ -21,7 +21,7 @@
                     @endif
 
                     <form action="{{ route('register') }}" method="POST">
-                        @csrf {{-- Untuk memastikan kalau form yang dikirim itu dari website kita bukan website luar (keamanan) --}}
+                        @csrf
 
                         
                         <div class_mb-3>
