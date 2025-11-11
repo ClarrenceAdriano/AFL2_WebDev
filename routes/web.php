@@ -18,12 +18,9 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
     Route::post('/cart/add/{productId}', [CartController::class, 'store'])->name('cart.store');
-    Route::delete('/cart/{id}', [CartController::class, 'destroy'])->name('cart.destroy');
     Route::put('/cart/{id}', [CartController::class, 'update'])->name('cart.update');
     Route::get('/checkout', [TransactionController::class, 'checkout'])->name('checkout');
     Route::post('/pay', [TransactionController::class, 'pay'])->name('pay');
