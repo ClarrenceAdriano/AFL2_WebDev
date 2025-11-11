@@ -13,24 +13,22 @@ class ProductController extends Controller
         $search = $request->search;
         $categoryId = $request->category;
 
-        $query = \App\Models\Product::query();
+        $query = Product::query();
 
         if ($search) {
             $query->where('name', 'like', "%{$search}%");
         }
 
-        $category = null;
-
         if ($categoryId) {
-            $category = Category::find($categoryId);
+            $query->where('category_id', $categoryId);
         }
 
+        $products = $query->paginate(12)->appends($request->query());
+        $categories = Category::all();
 
-        $products = $query->paginate(12);
-        $categories = \App\Models\Category::all();
-
-        return view('products', compact('products', 'categories', 'search', 'categoryId', 'category'));
+        return view('products', compact('products', 'categories', 'search', 'categoryId'));
     }
+
 
     public function featuredProducts()
     {
